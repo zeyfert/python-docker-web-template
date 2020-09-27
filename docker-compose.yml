@@ -2,5 +2,15 @@ version: "3"
 services:
   web:
     build: ./web
-    ports:
-      - "5000:5000"
+    container_name: flask
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: nginx_new
+    ports: 
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - web
