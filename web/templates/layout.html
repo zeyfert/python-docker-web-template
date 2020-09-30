@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+  </head>
+  <body>
+
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Just template</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="{{ url_for('flask_mongo') }}">Flask + MongoDB</a>
+          <a class="p-2 text-dark" href="{{ url_for('django_postgres') }}">Django + PostgreSQL</a>
+          <a class="p-2 text-dark" href="{{ url_for('documentation') }}">Documentation</a>
+        </nav>
+    </div>
+
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

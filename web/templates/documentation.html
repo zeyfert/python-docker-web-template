@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Django and PostgreSQL{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+    <p>1. First of all the app collects data (forecast) from <a href="https://openweathermap.org/api">Open Weather API </a>.</p>
+    <p>2. When data are received, a docker container starts to format them and sends to MongoDB (it is also docker-container).</p>
+    <p>3. Nginx captures your request and sends it to Flask.</p>
+    <p>4. After that Flask app collects the data from DB and prepares MATPLOTLIB figure and shows it.</p> 
+    <p>If you would like to take a look to the code, please go to <a href="https://github.com/zeyfert/python-docker-web-template">GitHub</a>.</p>
+    {% endblock %}

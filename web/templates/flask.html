@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Flask and MongoDB{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+    <p class="text-center"><b>Dear Friend!</b></p>
+    <p class="text-center">Please find wind forecast below.</p>
+    <p class="text-center">If you need more detailed information, please take a look at the table or <a href="{{ url_for('documentation') }}">"How it works"</a>.</p> 
+    <div class="row">
+    <img src="/plot.png" alt="Visualization">
+    </div>
+    <p></p>
+    <div>
+    <table class="table">
+        <thead>
+            <th scope="col">№</th>
+            <th scope="col">Date and Time</th>
+            <th scope="col">Temperature, C&deg;</th>
+            <th scope="col">Humidity, %</th>
+            <th scope="col">Wind Speed, m/s</th>
+            <th scope="col">Wind Degree, &deg;</th>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td></td>
+                <td>{{ row.timestamp }}</td>
+                <td>{{ row.temperature }}</td>
+                <td>{{ row.humidity }}</td>
+                <td>{{ row.wind_speed }}</td>
+                <td>{{ row.wind_degree }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </div>
+{% endblock %}

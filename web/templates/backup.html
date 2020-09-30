@@ -1,0 +1,26 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>Flaskr</h1>
+  <table>
+  <img src="/plot.png" alt="test plot">
+  {% for row in data %}
+    <tr>
+        <td>{{ row.timestamp }}</td>
+        <td>{{ row.temperature }}</td>
+        <td>{{ row.humidity }}</td>
+        <td>{{ row.wind_speed }}</td>
+        <td>{{ row.wind_degree }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+  <ul>
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>
