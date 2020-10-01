@@ -1,16 +1,25 @@
-version: "3"
+version: "3.8"
 services:
-  web:
+  web_flask:
     build: ./web
-    container_name: flask
+    container_name: web_flask
     command: gunicorn --bind 0.0.0.0:5000 app:app
+
+  api:
+    build: ./api
+
+  db_mongo:
+    image: mongo:4.2-bionic
+    container_name: db_mongo 
+    ports:
+      - "27017:27017"
 
   nginx:
     image: nginx:1.19-alpine
-    container_name: nginx_new
+    container_name: nginx
     ports: 
       - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
     depends_on:
-      - web
+      - web_flask
